@@ -14,7 +14,7 @@ jobs:
       - name: Build and push
         uses: elgohr/Publish-Docker-Github-Action@master
         with:
-          name: ${{ secrets.DOCKER_REPO }}/${{ secrets.DOCKER_ORG }}
+          name: unfor19/terraform-alpine
           username: ${{ secrets.DOCKER_LOGIN }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           tags: "latest"
