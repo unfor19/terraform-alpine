@@ -17,7 +17,7 @@ jobs:
           TERRAFORM_VERSION: ${GITHUB_REF_SLUG}
         with:
           name: ${{ secrets.DOCKER_REPO }}/${{ secrets.DOCKER_ORG }}
-          username: ${{ secrets.DOCKER_USERNAME }}
+          username: ${{ secrets.DOCKER_USER }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           buildargs: TERRAFORM_VERSION
           tags: "${GITHUB_REF_SLUG}"
