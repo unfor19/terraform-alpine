@@ -12,8 +12,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build and push
-        run: |
-          export DOCKER_TAG="${{ secrets.DOCKER_ORG }}/${{ secrets.DOCKER_REPO }}:latest"
-          docker build . --file Dockerfile --tag "${DOCKER_TAG}"
-          echo '${{ secrets.DOCKER_PASSWORD }}' | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
-          docker push "${DOCKER_TAG}"
+        uses: elgohr/Publish-Docker-Github-Action@master
+        with:
+          name: ${{ secrets.DOCKER_REPO }}/${{ secrets.DOCKER_ORG }}
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          tags: "latest"
