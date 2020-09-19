@@ -22,7 +22,7 @@ install_terraform(){
     local terraform_version
 
     if [[ -n $TERRAFORM_VERSION ]]; then
-        terraform_version=$TERRAFORM_VERSION
+        terraform_version=${TERRAFORM_VERSION//v/}
     else
         # Get latest version
         terraform_version=$(get_latest_terraform_version hashicorp terraform)
