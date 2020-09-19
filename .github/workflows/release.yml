@@ -7,7 +7,8 @@ on:
 jobs:
   alpine:
     runs-on: ubuntu-latest
-    env: DOCKER_BASENAME=${{ secrets.ORG }}/${{ secrets.REPO }}
+    env:
+      DOCKER_BASENAME: ${{ secrets.ORG }}/${{ secrets.REPO }}
     steps:
       - uses: actions/checkout@v2
       - name: Build and push
