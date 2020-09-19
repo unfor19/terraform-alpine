@@ -32,7 +32,8 @@ install_terraform(){
         echo "[ERROR] terraform_version is empty"
         exit 1
     fi
-
+    
+    echo "[LOG] Terraform version = $terraform_version"
     curl -sL "https://releases.hashicorp.com/terraform/${terraform_version}/terraform_${terraform_version}_linux_amd64.zip" -o terraform.zip
     unzip -qq terraform.zip && \
         rm terraform.zip && \
