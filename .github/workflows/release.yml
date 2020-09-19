@@ -15,9 +15,10 @@ jobs:
         uses: elgohr/Publish-Docker-Github-Action@master
         env:
           TERRAFORM_VERSION: ${GITHUB_REF_SLUG}
+          GITHUB_REF_SLUG: ${GITHUB_REF_SLUG}
         with:
           name: ${{ secrets.DOCKER_REPO }}/${{ secrets.DOCKER_ORG }}
           username: ${{ secrets.DOCKER_LOGIN }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           buildargs: TERRAFORM_VERSION
-          tags: env.TERRAFORM_VERSION
+          tags: "${GITHUB_REF_SLUG}"
