@@ -20,4 +20,4 @@ jobs:
           username: ${{ secrets.DOCKER_LOGIN }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           buildargs: TERRAFORM_VERSION
-          tags: "${GITHUB_REF_SLUG}"
+          tags: env.TERRAFORM_VERSION
