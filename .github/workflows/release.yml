@@ -27,6 +27,5 @@ jobs:
           TERRAFORM_VERSION: ${{ env.RELEASE_VERSION }}
         with:
           push: true
-          repository: ${{ secrets.DOCKER_ORG }}/${{ secrets.DOCKER_REPO }}
-          tags: ${{ env.RELEASE_VERSION }}
+          tags: ${{ secrets.DOCKER_ORG }}/${{ secrets.DOCKER_REPO }}:${{ env.RELEASE_VERSION }}
           build-args: TERRAFORM_VERSION
