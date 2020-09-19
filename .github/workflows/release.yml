@@ -1,0 +1,21 @@
+name: release
+
+on:
+  release:
+    types: [published, edited]
+
+jobs:
+  alpine:
+    runs-on: ubuntu-latest
+    env: DOCKER_BASENAME=${{ secrets.ORG }}/${{ secrets.REPO }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build and push
+        run: |
+          GITHUB_REF=$(echo "${GITHUB_REF}" | grep 'refs\/tags\/v')
+          version=$(echo "${GITHUB_REF}" | sed "s|refs\/tags\/v||g")        
+          export DOCKER_TAG="${DOCKER_BASENAME}:${GITHUB_REF}"
+
+          docker build . --file Dockerfile --tag "${DOCKER_TAG}"
+          echo '${{ secrets.DOCKER_PASSWORD }}' | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
+          docker push "${DOCKER_TAG}"
