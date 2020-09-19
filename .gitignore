@@ -1,0 +1,8 @@
+.*
+!.*ignore*
+!.github/
+!.circleci/
+!.drone.yml
+*.terraform
+*.idea
+*tfstate*
